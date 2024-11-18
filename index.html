@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M12</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparar el ambiente para el aprendizaje y motivar a los genios.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy es un día emocionante, porque llevaremos nuestras descomposiciones de papel al siguiente nivel: modelaremos nuestro avión en TinkerCAD."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar, quiero ver cómo están hoy. Si sienten que están listos para crear, den un salto en su lugar. Si necesitan un segundo para enfocarse, coloquen sus manos sobre su corazón."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos para agradecer esta oportunidad de aprender y crear algo increíble. ¡Gracias por estar aquí, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos grandes objetivos: 1. Usar nuestras descomposiciones para modelar un avión en TinkerCAD. 2. Combinar las técnicas aprendidas para que el modelo se asemeje al avión lo más posible. ¡Manos a la obra!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🚶‍♂️ Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Ejercicio físico para recargar energías y mejorar la concentración.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Caminata Rápida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a hacer un pequeño ejercicio para recargar energías. Durante 1 minuto, caminen rápidamente por el aula. Esto les ayudará a activar la circulación y prepararse para el trabajo creativo que haremos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre la Actividad".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Muy bien! Este pequeño ejercicio ayuda a mejorar la circulación y a recargar energía. Ahora estamos listos para concentrarnos mejor en la actividad que sigue."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 6.5 minutos</div>
+        <div class="subtitle">Formar equipos y organizar tareas colaborativas para la misión.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para esta misión formaremos equipos de dos personas, pero esta vez trabajen con alguien con quien no hayan colaborado antes. Tómense un momento para elegir a su nuevo compañero."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 11 "Scrumboard".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy vamos a usar una herramienta digital llamada Scrumboard, accesible desde la página https://scrumboard.org/. Es gratuita, no necesita registro, y ofrece herramientas perfectas para colaborar en equipo. Scrumboard les permitirá crear pizarrones digitales para organizar sus ideas y tareas, similar a un tablero Kanban. Lo mejor de todo es que al usar esta plataforma reducimos el uso de papel, ayudando al medio ambiente. Es una herramienta que pueden utilizar no solo en esta clase, sino en muchos otros proyectos en el futuro."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (2 minutos):</strong> Proyectar Diapositiva 12 "Tablero Kanban".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora ingresen a https://scrumboard.org/ y hagan clic en 'Crear un tablero gratis'. En este tablero, organizarán las tareas necesarias para modelar su avión en TinkerCAD. Por ejemplo, un miembro del equipo puede encargarse de las alas y los elevadores, mientras que el otro puede trabajar en las turbinas y el fuselaje. Lo importante es que dividan las responsabilidades de manera clara y colaboren eficientemente. Este ejercicio les ayudará a practicar la organización y el trabajo en equipo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (3 minutos):</strong> Proyectar Diapositiva 13 "Cronómetro - 3 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 30.5 minutos</div>
+        <div class="subtitle">Modelar un avión en TinkerCAD utilizando descomposiciones previas.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 14 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ha llegado el momento de llevar nuestras descomposiciones al siguiente nivel. En este Challenge, modelaremos en TinkerCAD el avión que descompusieron en papel."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 15 "Modelado del Avión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para este Challenge, usarán sus descomposiciones como guía para crear su avión en TinkerCAD. Además, les proporcionaré un modelo 3D del avión real como referencia. Solo necesitan escanear el QR que aparece en la pantalla y serán dirigidos a un visualizador 3D donde podrán observar el modelo desde todos los ángulos. Esto les permitirá analizar los detalles y replicar el avión de manera más precisa. Este ejercicio les ayudará a aplicar técnicas avanzadas de modelado mientras desarrollan habilidades prácticas en el uso de herramientas 3D."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (20 minutos):</strong> Proyectar Diapositiva 16 "Cronómetro - 20 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 17 "Comparación de Modelos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Genios, tiempo! Ahora, júntense con el equipo más cercano para comparar sus modelos. Analicen cómo se ven los resultados de cada equipo y discutan los retos técnicos que enfrentaron al construir sus aviones. Por ejemplo, ¿qué parte del avión fue más difícil de modelar? ¿Qué técnicas les funcionaron mejor para resolver esos desafíos? Este intercambio de ideas les ayudará a mejorar y aprender unos de otros."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (5 minutos):</strong> Proyectar Diapositiva 18 "Cronómetro - 5 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 19 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos alcanzado todos los objetivos de esta misión. Hoy practicaron técnicas de modelado 3D, usaron referencias para mejorar la precisión y colaboraron en equipo para resolver retos técnicos. ¡Gran trabajo, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 20 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Han demostrado su habilidad para aplicar técnicas avanzadas de modelado y para colaborar como equipo. Por eso, ganaron Mon-e como recompensa por su gran dedicación y esfuerzo. ¡Vamos por más desafíos!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cerrar la misión dejando el espacio limpio y ordenado.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 21 y reproducir la animación de honor de dojo.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, llegó el momento de cerrar la misión dejando nuestro espacio limpio y ordenado. Por favor, regresen las Magic Tablets al frente y asegúrense de dejar sus áreas de trabajo listas para la siguiente misión. Gracias por su esfuerzo y respeto al Dojo."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
